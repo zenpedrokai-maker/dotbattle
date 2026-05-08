@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Lobby - Dot Battle</title>
+
+<style>
+
+body{
+    background:black;
+    color:white;
+    font-family:Arial;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    margin:0;
+}
+
+.box{
+    text-align:center;
+}
+
+img{
+    width:300px;
+    margin:20px 0;
+    border:5px solid cyan;
+}
+
+button{
+    padding:15px 40px;
+    font-size:25px;
+    border:none;
+    border-radius:10px;
+    background:cyan;
+    cursor:pointer;
+}
+
+button:disabled{
+    opacity:0.5;
+}
+
+</style>
+</head>
+<body>
+
+<div class="box">
+
+    <h1>DOT BATTLE</h1>
+
+    <h2>Leia o QR Code</h2>
+
+    <img id="qrcode">
+
+    <h2 id="players">0/4 jogadores</h2>
+
+    <button id="startBtn" disabled>
+        INICIAR
+    </button>
+
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+
+<script>
+
+const socket = io();
+
+fetch("/qrcode")
+.then(res => res.text())
+.then(data => {
+
+    document.getElementById("qrcode").src = data;
+
+});
+
+socket.on("playerCount", (count) => {
+
+    document.getElementById("players").innerText =
+        count + "/4 jogadores";
+
+    if(count >= 4){
+
+        document.getElementById("startBtn").disabled = false;
+    }
+});
+
+document.getElementById("startBtn")
+.addEventListener("click", () => {
+
+    window.location.href = "/index.html";
+
+});
+
+</script>
+
+</body>
+</html>

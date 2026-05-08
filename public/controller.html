@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Controle</title>
+
+<style>
+
+body{
+    background:#222;
+    height:100vh;
+    margin:0;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:120px 120px 120px;
+    gap:15px;
+}
+
+button{
+    height:120px;
+    font-size:40px;
+    border:none;
+    border-radius:20px;
+}
+
+</style>
+</head>
+<body>
+
+<div class="grid">
+
+    <div></div>
+    <button ontouchstart="move('up')">↑</button>
+    <div></div>
+
+    <button ontouchstart="move('left')">←</button>
+    <button ontouchstart="move('down')">↓</button>
+    <button ontouchstart="move('right')">→</button>
+
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+
+<script>
+
+const socket = io();
+
+socket.emit("joinGame");
+
+function move(dir){
+    socket.emit("move", dir);
+}
+
+</script>
+
+</body>
+</html>

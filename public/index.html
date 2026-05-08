@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Dot Battle</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+  <div class="hud">
+    <h1>DOT BATTLE</h1>
+
+    <div class="placar">
+      <div class="player-score azul">Azul: <span id="score1">0</span></div>
+      <div class="player-score vermelho">Vermelho: <span id="score2">0</span></div>
+      <div class="player-score verde">Verde: <span id="score3">0</span></div>
+      <div class="player-score amarelo">Amarelo: <span id="score4">0</span></div>
+    </div>
+  </div>
+
+
+  <div id="game">
+
+    <div class="player azul" id="player1"></div>
+    <div class="player vermelho" id="player2"></div>
+    <div class="player verde" id="player3"></div>
+    <div class="player amarelo" id="player4"></div>
+
+
+   <!-- TOPO -->
+
+<div class="wall horizontal" style="left:80px; top:80px;"></div>
+<div class="wall horizontal" style="left:330px; top:80px;"></div>
+<div class="wall horizontal" style="left:580px; top:80px;"></div>
+
+
+<!-- MEIO SUPERIOR -->
+
+<div class="wall vertical" style="left:220px; top:140px;"></div>
+<div class="wall vertical" style="left:450px; top:140px;"></div>
+<div class="wall vertical" style="left:680px; top:140px;"></div>
+
+
+<!-- CENTRO -->
+
+<div class="wall horizontal" style="left:150px; top:260px;"></div>
+<div class="wall horizontal" style="left:400px; top:260px;"></div>
+<div class="wall horizontal" style="left:650px; top:260px;"></div>
+
+<div class="wall vertical" style="left:340px; top:320px;"></div>
+<div class="wall vertical" style="left:560px; top:320px;"></div>
+
+
+<!-- PARTE BAIXA -->
+
+<div class="wall horizontal" style="left:80px; top:470px;"></div>
+<div class="wall horizontal" style="left:330px; top:470px;"></div>
+<div class="wall horizontal" style="left:580px; top:470px;"></div>
+
+
+<!-- LATERAIS -->
+
+<div class="wall vertical" style="left:100px; top:220px;"></div>
+<div class="wall vertical" style="left:760px; top:220px;"></div>
+
+  </div>
+
+  <script src="script.js"></script>
+  
+  <script src="/socket.io/socket.io.js"></script>
+
+
+</body>
+</html>

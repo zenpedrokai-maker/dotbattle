@@ -1,0 +1,230 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body{
+  background:black;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  min-height: 100vh;
+}
+
+
+.hud{
+  width: 900px;
+  margin-top: 20px;
+}
+
+
+h1{
+  text-align: center;
+  margin-bottom: 15px;
+  color: cyan;
+}
+
+
+.placar{
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 10px;
+}
+
+
+.player-score{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+.azul{
+  color: #00aaff;
+}
+
+
+.vermelho{
+  color: #ff4444;
+}
+
+
+.verde{
+  color: #00ff88;
+}
+
+
+.amarelo{
+  color: #ffee00;
+}
+
+
+#game{
+  width: 900px;
+  height: 600px;
+
+  background: #1e1e1e;
+
+  border: 4px solid white;
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+
+
+/* Jogadores */
+
+.player{
+  width: 30px;
+  height: 30px;
+
+  position: absolute;
+
+  border-radius: 8px;
+}
+
+
+
+/* Posições Iniciais */
+
+#player1{
+  background: #00aaff;
+  left: 50px;
+  top: 50px;
+}
+
+
+#player2{
+  background: #ff4444;
+  left: 800px;
+  top: 50px;
+}
+
+
+#player3{
+  background: #00ff88;
+  left: 50px;
+  top: 500px;
+}
+
+
+#player4{
+  background: #ffee00;
+  left: 800px;
+  top: 500px;
+}
+
+
+
+/* BOLINHAS */
+
+.dot{
+  width: 12px;
+  height: 12px;
+
+  background: white;
+
+  border-radius: 50%;
+
+  position: absolute;
+}
+
+
+
+.speed-power{
+
+  width: 25px;
+  height: 25px;
+
+  border-radius: 50%;
+
+  background: cyan;
+
+  position: absolute;
+
+  box-shadow:
+    0 0 10px cyan,
+    0 0 20px cyan,
+    0 0 40px cyan;
+
+  animation: pulse 1s infinite;
+}
+
+
+@keyframes pulse{
+
+  0%{
+    transform: scale(1);
+  }
+
+  50%{
+    transform: scale(1.2);
+  }
+
+  100%{
+    transform: scale(1);
+  }
+
+}
+
+/* PAREDES */
+
+.wall{
+  position: absolute;
+
+  background: linear-gradient(
+    180deg,
+    #1e40ff,
+    #001aff
+  );
+
+  border: 2px solid #4da6ff;
+
+  box-shadow:
+    0 0 8px rgba(0, 89, 255, 0.7);
+
+  border-radius: 4px;
+}
+
+
+/* Horizontais */
+
+.horizontal{
+  width: 140px;
+  height: 18px;
+}
+
+.vertical{
+  width: 18px;
+  height: 120px;
+}
+
+/* KILL MODE */
+
+.kill-mode{
+
+  box-shadow:
+    0 0 10px purple,
+    0 0 25px violet,
+    0 0 40px purple;
+
+  border: 2px solid violet;
+}
+
+
+/* PLAYER CONGELADO */
+
+.frozen{
+
+  opacity: 0.5;
+
+  filter: grayscale(100%);
+}
