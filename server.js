@@ -8,6 +8,29 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server);
 
+
+const walls = [
+
+
+];
+
+function bateuNaParede(x, y){
+
+    for(let wall of walls){
+
+        if(
+            x < wall.x + wall.w &&
+            x + 30 > wall.x &&
+            y < wall.y + wall.h &&
+            y + 30 > wall.y
+        ){
+            return true;
+        }
+    }
+
+    return false;
+}
+
 app.use("/public", express.static("public"));
 
 app.get("/", (req, res) => {
@@ -43,7 +66,7 @@ function getLocalIP(){
 // GERAR LINK
 
 const controllerURL =
-"https://dotbattle.onrender.com/controller.html";
+"https://dotbattle.onrender.com/public/controller.html";
 
 
 // ROTA QR CODE
@@ -89,10 +112,41 @@ io.on("connection", (socket) => {
 
         const speed = 15;
 
-        if(dir === "up") p.y -= speed;
-        if(dir === "down") p.y += speed;
-        if(dir === "left") p.x -= speed;
-        if(dir === "right") p.x += speed;
+        if(dir === "up"){
+
+    let novoY = p.y - speed;
+
+    if(!bateuNaParede(p.x, novoY)){
+        p.y = novoY;
+    }
+}
+
+if(dir === "down"){
+
+    let novoY = p.y + speed;
+
+    if(!bateuNaParede(p.x, novoY)){
+        p.y = novoY;
+    }
+}
+
+if(dir === "left"){
+
+    let novoX = p.x - speed;
+
+    if(!bateuNaParede(novoX, p.y)){
+        p.x = novoX;
+    }
+}
+
+if(dir === "right"){
+
+    let novoX = p.x + speed;
+
+    if(!bateuNaParede(novoX, p.y)){
+        p.x = novoX;
+    }
+}
 
         io.emit("players", players);
     });
