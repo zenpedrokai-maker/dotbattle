@@ -46,22 +46,19 @@ h1{
 
 
 .azul{
-  color: #00aaff;
+    background-image:url("img/p1.png");
 }
-
 
 .vermelho{
-  color: #ff4444;
+    background-image:url("img/p2.png");
 }
-
 
 .verde{
-  color: #00ff88;
+    background-image:url("img/p3.png");
 }
 
-
 .amarelo{
-  color: #ffee00;
+    background-image:url("img/p4.png");
 }
 
 
@@ -83,41 +80,38 @@ h1{
 /* Jogadores */
 
 .player{
-  width: 30px;
-  height: 30px;
+    width:30px;
+    height:30px;
+    position:absolute;
 
-  position: absolute;
-
-  border-radius: 8px;
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
 }
-
 
 
 /* Posições Iniciais */
 
 #player1{
-  background: #00aaff;
+  
   left: 50px;
   top: 50px;
 }
 
-
 #player2{
-  background: #ff4444;
+  background-color: #ff4444;
   left: 800px;
   top: 50px;
 }
 
-
 #player3{
-  background: #00ff88;
+  background-color: #00ff88;
   left: 50px;
   top: 500px;
 }
 
-
 #player4{
-  background: #ffee00;
+  background-color: #ffee00;
   left: 800px;
   top: 500px;
 }
@@ -211,12 +205,11 @@ h1{
 
 .kill-mode{
 
-  box-shadow:
-    0 0 10px purple,
-    0 0 25px violet,
-    0 0 40px purple;
+  filter:
+    drop-shadow(0 0 5px purple)
+    drop-shadow(0 0 15px violet)
+    drop-shadow(0 0 30px purple);
 
-  border: 2px solid violet;
 }
 
 
