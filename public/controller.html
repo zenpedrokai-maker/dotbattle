@@ -2,45 +2,137 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>Controle</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Controle - Dot Battle</title>
 
 <style>
 
-body{
-    background:#222;
-    height:100vh;
+*{
     margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#050816;
+    font-family:Arial;
+    color:white;
+
+    height:100vh;
+
     display:flex;
     justify-content:center;
     align-items:center;
 }
 
-.grid{
-    display:grid;
-    grid-template-columns:120px 120px 120px;
-    gap:15px;
+.container{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:25px;
 }
 
-button{
-    height:120px;
-    font-size:40px;
+h1{
+    color:cyan;
+    font-size:38px;
+
+    text-shadow:
+    0 0 10px cyan,
+    0 0 20px cyan,
+    0 0 40px cyan;
+}
+
+.status{
+    font-size:20px;
+    opacity:0.8;
+}
+
+.controls{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:18px;
+}
+
+.middle{
+    display:flex;
+    gap:18px;
+}
+
+.btn{
+
+    width:95px;
+    height:95px;
+
     border:none;
-    border-radius:20px;
+    border-radius:22px;
+
+    font-size:42px;
+    font-weight:bold;
+
+    color:white;
+
+    background:linear-gradient(
+        145deg,
+        #00cfff,
+        #0066ff
+    );
+
+    box-shadow:
+    0 0 10px #00cfff,
+    0 0 25px #0099ff,
+    0 0 50px #0066ff;
+
+    transition:0.15s;
+
+    user-select:none;
+}
+
+.btn:active{
+
+    transform:scale(0.92);
+
+    box-shadow:
+    0 0 5px #00cfff,
+    0 0 15px #0099ff;
 }
 
 </style>
 </head>
 <body>
 
-<div class="grid">
+<div class="container">
 
-    <div></div>
-    <button ontouchstart="move('up')">↑</button>
-    <div></div>
+    <h1>DOT BATTLE</h1>
 
-    <button ontouchstart="move('left')">←</button>
-    <button ontouchstart="move('down')">↓</button>
-    <button ontouchstart="move('right')">→</button>
+    <div class="status">
+        Controle conectado
+    </div>
+
+    <div class="controls">
+
+        <button class="btn" id="up">
+            ↑
+        </button>
+
+        <div class="middle">
+
+            <button class="btn" id="left">
+                ←
+            </button>
+
+            <button class="btn" id="right">
+                →
+            </button>
+
+        </div>
+
+        <button class="btn" id="down">
+            ↓
+        </button>
+
+    </div>
 
 </div>
 
@@ -52,9 +144,23 @@ const socket = io();
 
 socket.emit("joinGame");
 
-function move(dir){
+function mover(dir){
+
     socket.emit("move", dir);
+
 }
+
+document.getElementById("up")
+.addEventListener("touchstart", () => mover("up"));
+
+document.getElementById("down")
+.addEventListener("touchstart", () => mover("down"));
+
+document.getElementById("left")
+.addEventListener("touchstart", () => mover("left"));
+
+document.getElementById("right")
+.addEventListener("touchstart", () => mover("right"));
 
 </script>
 
