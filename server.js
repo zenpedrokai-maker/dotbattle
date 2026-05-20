@@ -71,6 +71,22 @@ function getLocalIP(){
 const controllerURL =
 "https://dotbattle.onrender.com/controller";
 
+app.get("/qrcode", async (req, res) => {
+
+    try{
+
+        const qr = await QRCode.toDataURL(controllerURL);
+
+        res.send(qr);
+
+    }catch(err){
+
+        res.status(500).send("Erro QR");
+
+    }
+
+});
+
 
 // ROTA QR CODE
 
