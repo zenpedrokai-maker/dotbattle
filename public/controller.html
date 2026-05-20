@@ -150,17 +150,35 @@ function mover(dir){
 
 }
 
-document.getElementById("up")
-.addEventListener("touchstart", () => mover("up"));
+let intervalo;
 
-document.getElementById("down")
-.addEventListener("touchstart", () => mover("down"));
+function iniciar(dir){
 
-document.getElementById("left")
-.addEventListener("touchstart", () => mover("left"));
+    mover(dir);
 
-document.getElementById("right")
-.addEventListener("touchstart", () => mover("right"));
+    intervalo = setInterval(() => {
+        mover(dir);
+    }, 50);
+}
+
+function parar(){
+
+    clearInterval(intervalo);
+}
+
+function configurarBotao(id, dir){
+
+    const btn = document.getElementById(id);
+
+    btn.addEventListener("touchstart", () => iniciar(dir));
+
+    btn.addEventListener("touchend", parar);
+}
+
+configurarBotao("up", "up");
+configurarBotao("down", "down");
+configurarBotao("left", "left");
+configurarBotao("right", "right");
 
 </script>
 

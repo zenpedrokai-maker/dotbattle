@@ -806,29 +806,36 @@ socket.on("players", (players) => {
     const ids = Object.keys(players);
 
     if(ids[0]){
-
         p1.x = players[ids[0]].x;
         p1.y = players[ids[0]].y;
     }
 
     if(ids[1]){
-
         p2.x = players[ids[1]].x;
         p2.y = players[ids[1]].y;
     }
 
     if(ids[2]){
-
         p3.x = players[ids[2]].x;
         p3.y = players[ids[2]].y;
     }
 
     if(ids[3]){
-
         p4.x = players[ids[3]].x;
         p4.y = players[ids[3]].y;
     }
 
     atualizarJogadores();
+
+    // COLISÕES
+    verificarColisao(player1, p1, score1);
+    verificarColisao(player2, p2, score2);
+    verificarColisao(player3, p3, score3);
+    verificarColisao(player4, p4, score4);
+
+    verificarPowerSpeed();
+    verificarKillPower();
+    verificarPlayers();
+    verificarVitoria();
 
 });
