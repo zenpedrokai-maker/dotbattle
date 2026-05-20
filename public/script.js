@@ -13,6 +13,8 @@ const score2 = document.getElementById("score2");
 const score3 = document.getElementById("score3");
 const score4 = document.getElementById("score4");
 
+const walls = document.querySelectorAll(".wall");
+
 // SONS
 
 const somKill = new Audio("kill.mp3");
@@ -173,107 +175,7 @@ setInterval(() => {
 }, 15000);
 
 
-// MOVIMENTO
 
-
-document.addEventListener("keydown", (event) => {
-
-
-// PLAYER 1 (SETAS)
-
-if(!frozen1){
-
-    if(event.key === "ArrowRight"){
-        p1.x += speed1;
-    }
-
-    if(event.key === "ArrowLeft"){
-        p1.x -= speed1;
-    }
-
-    if(event.key === "ArrowUp"){
-        p1.y -= speed1;
-    }
-
-    if(event.key === "ArrowDown"){
-        p1.y += speed1;
-    }
-
-}
-
-
-// PLAYER 2 (WASD)
-    
-
-if(!frozen2){
-
-    if(event.key === "d"){
-        p2.x += speed2;
-    }
-
-    if(event.key === "a"){
-        p2.x -= speed2;
-    }
-
-    if(event.key === "w"){
-        p2.y -= speed2;
-    }
-
-    if(event.key === "s"){
-        p2.y += speed2;
-    }
-
-}
-
-
-    // PLAYER 3 (TFGH)
-
-
-
-if(!frozen3){
-
-    if(event.key === "h"){
-        p3.x += speed3;
-    }
-
-    if(event.key === "f"){
-        p3.x -= speed3;
-    }
-
-    if(event.key === "t"){
-        p3.y -= speed3;
-    }
-
-    if(event.key === "g"){
-        p3.y += speed3;
-    }
-
-}
-
- 
-    // PLAYER 4 (IJKL)
-
-if(!frozen4){
-
-    if(event.key === "l"){
-        p4.x += speed4;
-    }
-
-    if(event.key === "j"){
-        p4.x -= speed4;
-    }
-
-    if(event.key === "i"){
-        p4.y -= speed4;
-    }
-
-    if(event.key === "k"){
-        p4.y += speed4;
-    }
-
-}
-
- 
     // LIMITES DO MAPA
 
 
@@ -330,6 +232,28 @@ function atualizarJogadores(){
     player4.style.top = p4.y + "px";
 }
 
+function bateuNaParede(x, y){
+
+    for(let wall of walls){
+
+        const wallX = wall.offsetLeft;
+        const wallY = wall.offsetTop;
+
+        const wallW = wall.offsetWidth;
+        const wallH = wall.offsetHeight;
+
+        if(
+            x < wallX + wallW &&
+            x + 30 > wallX &&
+            y < wallY + wallH &&
+            y + 30 > wallY
+        ){
+            return true;
+        }
+    }
+
+    return false;
+}
 
 // LIMITAR MAPA
 

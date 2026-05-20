@@ -78,6 +78,12 @@ app.get("/qrcode", async (req, res) => {
     res.send(qr);
 });
 
+app.get("/game", (req, res) => {
+
+    res.sendFile(__dirname + "/public/index.html");
+
+});
+
 
 // SOCKET
 
@@ -91,10 +97,19 @@ io.on("connection", (socket) => {
             return;
         }
 
-        players[socket.id] = {
-            x: 100,
-            y: 100
-        };
+        const total = Object.keys(players).length;
+
+let posicoes = [
+    { x:50, y:50 },
+    { x:800, y:50 },
+    { x:50, y:500 },
+    { x:800, y:500 }
+];
+
+players[socket.id] = {
+    x: posicoes[total].x,
+    y: posicoes[total].y
+};
 
         io.emit("players", players);
 
