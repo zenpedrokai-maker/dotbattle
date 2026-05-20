@@ -31,7 +31,10 @@ function bateuNaParede(x, y){
     return false;
 }
 
-app.use(express.static("public"));
+app.use(express.static("public", {
+    index: false
+}));
+
 
 app.get("/", (req, res) => {
 
