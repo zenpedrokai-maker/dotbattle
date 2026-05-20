@@ -66,7 +66,7 @@ function getLocalIP(){
 // GERAR LINK
 
 const controllerURL =
-"https://dotbattle.onrender.com/public/controller.html";
+"https://dotbattle.onrender.com/controller";
 
 
 // ROTA QR CODE

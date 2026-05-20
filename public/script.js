@@ -211,7 +211,7 @@ verificarPlayers();
 
     verificarVitoria();
 
-});
+
 
 
 // ATUALIZAR JOGADORES
