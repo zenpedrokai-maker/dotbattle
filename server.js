@@ -31,7 +31,7 @@ function bateuNaParede(x, y){
     return false;
 }
 
-app.use("/public", express.static("public"));
+app.use(express.static("public"));
 
 app.get("/", (req, res) => {
 
@@ -71,19 +71,17 @@ const controllerURL =
 
 // ROTA QR CODE
 
-app.get("/qrcode", async (req, res) => {
-
-    const qr = await QRCode.toDataURL(controllerURL);
-
-    res.send(qr);
+app.get("/", (req, res) => {
+    res.sendFile(__dirname + "/public/lobby.html");
 });
 
 app.get("/game", (req, res) => {
-
     res.sendFile(__dirname + "/public/index.html");
-
 });
 
+app.get("/controller", (req, res) => {
+    res.sendFile(__dirname + "/public/controller.html");
+});
 
 // SOCKET
 
