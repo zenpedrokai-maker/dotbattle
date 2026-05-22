@@ -125,7 +125,8 @@ let posicoes = [
 
 players[socket.id] = {
     x: posicoes[total].x,
-    y: posicoes[total].y
+    y: posicoes[total].y,
+    speed: 8
 };
 
         io.emit("players", players);
@@ -142,7 +143,7 @@ players[socket.id] = {
 
         if(!p) return;
 
-        const speed = 8;
+        const speed = p.speed;
 
         if(dir === "up"){
 
@@ -192,6 +193,25 @@ if(dir === "right"){
             Object.keys(players).length
         );
     });
+});
+
+socket.on("speedBoost", (id) => {
+
+    if(players[id]){
+
+        players[id].speed = 16;
+
+        setTimeout(() => {
+
+            if(players[id]){
+
+                players[id].speed = 8;
+
+            }
+
+        }, 5000);
+    }
+
 });
 
 // PORTA RENDER
