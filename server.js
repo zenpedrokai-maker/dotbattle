@@ -142,7 +142,7 @@ players[socket.id] = {
 
         if(!p) return;
 
-        const speed = 6;
+        const speed = 8;
 
         if(dir === "up"){
 

@@ -144,43 +144,74 @@ const socket = io();
 
 socket.emit("joinGame");
 
-function mover(dir){
+let intervalo = null;
+
+// COMEÇAR MOVIMENTO
+
+function iniciarMovimento(dir){
+
+    pararMovimento();
 
     socket.emit("move", dir);
 
-}
-
-let intervalo;
-
-function iniciar(dir){
-
-    mover(dir);
-
     intervalo = setInterval(() => {
-        mover(dir);
-    }, 100);
+
+        socket.emit("move", dir);
+
+    }, 80);
+
 }
 
-function parar(){
+// PARAR MOVIMENTO
+
+function pararMovimento(){
 
     clearInterval(intervalo);
+
 }
 
-function configurarBotao(id, dir){
 
-    const btn = document.getElementById(id);
+// BOTÕES
 
-    btn.addEventListener("touchstart", () => iniciar(dir));
+const up = document.getElementById("up");
+const down = document.getElementById("down");
+const left = document.getElementById("left");
+const right = document.getElementById("right");
 
-    btn.addEventListener("touchend", parar);
-}
 
-configurarBotao("up", "up");
-configurarBotao("down", "down");
-configurarBotao("left", "left");
-configurarBotao("right", "right");
+// TOUCH START
+
+up.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    iniciarMovimento("up");
+});
+
+down.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    iniciarMovimento("down");
+});
+
+left.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    iniciarMovimento("left");
+});
+
+right.addEventListener("touchstart", (e) => {
+    e.preventDefault();
+    iniciarMovimento("right");
+});
+
+
+// TOUCH END
+
+up.addEventListener("touchend", pararMovimento);
+down.addEventListener("touchend", pararMovimento);
+left.addEventListener("touchend", pararMovimento);
+right.addEventListener("touchend", pararMovimento);
+
+
+// EVITA BUG AO ARRASTAR O DEDO
+
+document.addEventListener("touchend", pararMovimento);
 
 </script>
-
-</body>
-</html>
