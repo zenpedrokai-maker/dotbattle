@@ -156,6 +156,9 @@ setTimeout(() => {
 
 }, 8000);
 
+
+verificarStealPower();
+
 // PRIMEIRA APARIÇÃO
 
 aparecerPowerUp();
@@ -747,34 +750,54 @@ function ativarKillMode(player){
 
 function ativarSpeed(player){
 
-    function ativarSpeed(player){
+    if(player === 1){
 
-    const ids = Object.keys(players);
+        speed1 = 20;
 
-    if(player === 1 && ids[0]){
+        setTimeout(() => {
 
-        socket.emit("speedBoost", ids[0]);
+            speed1 = 10;
 
-    }
-
-    if(player === 2 && ids[1]){
-
-        socket.emit("speedBoost", ids[1]);
+        }, 5000);
 
     }
 
-    if(player === 3 && ids[2]){
+    if(player === 2){
 
-        socket.emit("speedBoost", ids[2]);
+        speed2 = 20;
+
+        setTimeout(() => {
+
+            speed2 = 10;
+
+        }, 5000);
 
     }
 
-    if(player === 4 && ids[3]){
+    if(player === 3){
 
-        socket.emit("speedBoost", ids[3]);
+        speed3 = 20;
+
+        setTimeout(() => {
+
+            speed3 = 10;
+
+        }, 5000);
 
     }
 
+    if(player === 4){
+
+        speed4 = 20;
+
+        setTimeout(() => {
+
+            speed4 = 10;
+
+        }, 5000);
+
+    }
+	
 }
 
 const socket = io();

@@ -195,25 +195,6 @@ if(dir === "right"){
     });
 });
 
-socket.on("speedBoost", (id) => {
-
-    if(players[id]){
-
-        players[id].speed = 16;
-
-        setTimeout(() => {
-
-            if(players[id]){
-
-                players[id].speed = 8;
-
-            }
-
-        }, 5000);
-    }
-
-});
-
 // PORTA RENDER
 
 const PORT = process.env.PORT || 3000;
