@@ -101,8 +101,8 @@ game.appendChild(killPower);
 
 function aparecerKillPower(){
 
-    const randomX = Math.random() * 850;
-    const randomY = Math.random() * 550;
+ const randomX = Math.random() * (gameWidth - 40);
+const randomY = Math.random() * (gameHeight - 40);
 
     killPower.style.left = randomX + "px";
     killPower.style.top = randomY + "px";
@@ -138,8 +138,8 @@ setInterval(() => {
 
 function aparecerPowerUp(){
 
-    const randomX = Math.random() * 850;
-    const randomY = Math.random() * 550;
+const randomX = Math.random() * (gameWidth - 40);
+const randomY = Math.random() * (gameHeight - 40);
 
     speedPower.style.left = randomX + "px";
     speedPower.style.top = randomY + "px";
@@ -157,7 +157,7 @@ setTimeout(() => {
 }, 8000);
 
 
-verificarStealPower();
+
 
 // PRIMEIRA APARIÇÃO
 
@@ -176,43 +176,6 @@ setInterval(() => {
     }
 
 }, 15000);
-
-
-
-    // LIMITES DO MAPA
-
-
-    limitarMapa(p1);
-    limitarMapa(p2);
-    limitarMapa(p3);
-    limitarMapa(p4);
-
- 
-    // ATUALIZAR POSIÇÕES
-
-
-    atualizarJogadores();
-
-
-    // COLISÕES
- 
-
-    verificarColisao(player1, p1, score1);
-    verificarColisao(player2, p2, score2);
-    verificarColisao(player3, p3, score3);
-    verificarColisao(player4, p4, score4);
-
-    verificarPowerSpeed();
-	
-	verificarKillPower();
-
-verificarPlayers();
-
- 
-    // VITÓRIA
-
-
-    verificarVitoria();
 
 
 
@@ -840,5 +803,9 @@ socket.on("players", (players) => {
     verificarKillPower();
     verificarPlayers();
     verificarVitoria();
+	
+	if(typeof verificarStealPower === "function"){
+    verificarStealPower();
+}
 
 });
