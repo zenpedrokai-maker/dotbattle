@@ -138,6 +138,22 @@ players[socket.id] = {
     });
 
     socket.on("move", (dir) => {
+		
+		socket.on("speedBoost", () => {
+
+    const p = players[socket.id];
+
+    if(!p) return;
+
+    p.speed = 16;
+
+    setTimeout(() => {
+
+        p.speed = 8;
+
+    }, 5000);
+
+});
 
         const p = players[socket.id];
 
@@ -204,3 +220,4 @@ server.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);
 
 });
+
