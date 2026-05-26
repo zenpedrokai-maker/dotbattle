@@ -28,10 +28,7 @@ let p2 = { x: 800, y: 50, pontos: 0 };
 let p3 = { x: 50, y: 500, pontos: 0 };
 let p4 = { x: 800, y: 500, pontos: 0 };
 
-let speed1 = 10;
-let speed2 = 10;
-let speed3 = 10;
-let speed4 = 10;
+
 
 // KILL MODE
 
@@ -521,8 +518,8 @@ function verificarPowerSpeed(){
     // PLAYER 1
 
     if(
-        Math.abs(p1.x - powerX) < 30 &&
-        Math.abs(p1.y - powerY) < 30
+        Math.abs(p1.x - powerX) < 45 &&
+        Math.abs(p1.y - powerY) < 45
     ){
 
         ativarSpeed(1);
@@ -712,6 +709,8 @@ function ativarKillMode(player){
 }
 
 function ativarSpeed(){
+	
+	console.log("PEGOU SPEED");
 
     socket.emit("speedBoost");
 

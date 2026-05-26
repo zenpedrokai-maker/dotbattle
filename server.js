@@ -149,9 +149,13 @@ players[socket.id] = {
 
     p.speed = 16;
 
+    io.emit("players", players);
+
     setTimeout(() => {
 
         p.speed = 8;
+
+        io.emit("players", players);
 
     }, 5000);
 
@@ -164,6 +168,7 @@ players[socket.id] = {
         if(!p) return;
 
         const speed = p.speed;
+		console.log(speed);
 
         if(dir === "up"){
 
