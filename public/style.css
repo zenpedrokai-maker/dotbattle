@@ -133,24 +133,6 @@ h1{
 
 
 
-.speed-power{
-
-  width: 25px;
-  height: 25px;
-
-  border-radius: 50%;
-
-  background: cyan;
-
-  position: absolute;
-
-  box-shadow:
-    0 0 10px cyan,
-    0 0 20px cyan,
-    0 0 40px cyan;
-
-  animation: pulse 1s infinite;
-}
 
 
 @keyframes pulse{
@@ -220,4 +202,51 @@ h1{
   opacity: 0.5;
 
   filter: grayscale(100%);
+}
+
+/* POWER UPS */
+
+.speed-power{
+
+    position:absolute;
+
+    width:25px;
+    height:25px;
+
+    border-radius:50%;
+
+    background:#00ff88;
+
+    box-shadow:
+    0 0 10px #00ff88,
+    0 0 20px #00ff88,
+    0 0 40px #00ff88;
+
+    z-index:100;
+}
+
+
+/* POWER ROUBAR */
+
+.steal-power{
+
+    position:absolute;
+
+    width:30px;
+    height:30px;
+
+    border-radius:50%;
+
+    background:orange;
+
+    border:2px solid yellow;
+
+    box-shadow:
+    0 0 10px yellow,
+    0 0 25px orange,
+    0 0 50px gold;
+
+    animation:pulse 0.8s infinite;
+
+    z-index:100;
 }

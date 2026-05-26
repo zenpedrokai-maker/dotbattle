@@ -137,7 +137,9 @@ players[socket.id] = {
         );
     });
 
-    socket.on("move", (dir) => {
+
+		
+// SPEED BOOST		
 		
 		socket.on("speedBoost", () => {
 
@@ -154,6 +156,8 @@ players[socket.id] = {
     }, 5000);
 
 });
+
+    socket.on("move", (dir) => {
 
         const p = players[socket.id];
 

@@ -2,7 +2,7 @@
 
 const stealPower = document.createElement("div");
 
-stealPower.classList.add("speed-power");
+stealPower.classList.add("steal-power");
 
 stealPower.style.background = "orange";
 
@@ -40,7 +40,7 @@ setInterval(() => {
 
     stealPower.style.display = "none";
 
-}, 8000);
+}, 15000);
 
 
 // REAPARECER
@@ -53,7 +53,7 @@ setInterval(() => {
 
     }
 
-}, 15000);
+}, 8000);
 
 
 // VERIFICAR COLISÃO
@@ -79,9 +79,9 @@ function verificarStealPower(){
 function verificarRoubo(player, numero, powerX, powerY){
 
     if(
-        Math.abs(player.x - powerX) < 30 &&
-        Math.abs(player.y - powerY) < 30
-    ){
+    Math.abs(p1.x - powerX) < 45 &&
+    Math.abs(p1.y - powerY) < 45
+){
 
         roubarPontos(numero);
 
