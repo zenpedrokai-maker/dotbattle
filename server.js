@@ -168,7 +168,7 @@ players[socket.id] = {
         if(!p) return;
 
         const speed = p.speed;
-		console.log(speed);
+		console.log("VELOCIDADE:", speed);
 
         if(dir === "up"){
 

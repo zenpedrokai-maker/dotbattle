@@ -250,3 +250,14 @@ h1{
 
     z-index:100;
 }
+
+/* SPEED MODE */
+
+.speed-mode{
+
+    filter:
+    drop-shadow(0 0 5px #00ff88)
+    drop-shadow(0 0 15px #00ff88)
+    drop-shadow(0 0 30px #00ff88);
+
+}
