@@ -1,6 +1,5 @@
 // ELEMENTOS
 
-
 const game = document.getElementById("game");
 
 const player1 = document.getElementById("player1");
@@ -15,6 +14,7 @@ const score4 = document.getElementById("score4");
 
 const walls = document.querySelectorAll(".wall");
 
+
 // SONS
 
 const somKill = new Audio("kill.mp3");
@@ -22,12 +22,15 @@ const somKill = new Audio("kill.mp3");
 
 // POSIÇÕES
 
-
 let p1 = { x: 50, y: 50, pontos: 0 };
 let p2 = { x: 800, y: 50, pontos: 0 };
 let p3 = { x: 50, y: 500, pontos: 0 };
 let p4 = { x: 800, y: 500, pontos: 0 };
 
+
+// SOCKET
+
+const socket = io();
 
 
 // KILL MODE
@@ -45,13 +48,14 @@ let frozen2 = false;
 let frozen3 = false;
 let frozen4 = false;
 
-// tamanho do mapa
+
+// TAMANHO MAPA
+
 const gameWidth = 900;
 const gameHeight = 600;
 
 
 // BOLINHAS
-
 
 for(let i = 0; i < 100; i++){
 
@@ -69,37 +73,23 @@ for(let i = 0; i < 100; i++){
 }
 
 
-// POWER-UP VELOCIDADE
-
-const speedPower = document.createElement("div");
-
-speedPower.classList.add("speed-power");
-
-game.appendChild(speedPower);
-
+// =========================
 // POWER KILL
+// =========================
 
 const killPower = document.createElement("div");
 
-killPower.classList.add("speed-power");
-
-killPower.style.background = "purple";
-
-killPower.style.boxShadow = `
-0 0 10px purple,
-0 0 20px violet,
-0 0 40px purple
-`;
+killPower.classList.add("kill-power");
 
 game.appendChild(killPower);
 
 
-// POSIÇÃO ALEATÓRIA
+// APARECER
 
 function aparecerKillPower(){
 
- const randomX = Math.random() * (gameWidth - 40);
-const randomY = Math.random() * (gameHeight - 40);
+    const randomX = Math.random() * (gameWidth - 40);
+    const randomY = Math.random() * (gameHeight - 40);
 
     killPower.style.left = randomX + "px";
     killPower.style.top = randomY + "px";
@@ -107,15 +97,19 @@ const randomY = Math.random() * (gameHeight - 40);
     killPower.style.display = "block";
 }
 
-// SUMIR APÓS 8 SEGUNDOS
 
-setTimeout(() => {
+// PRIMEIRA VEZ
+
+aparecerKillPower();
+
+
+// SUMIR
+
+setInterval(() => {
 
     killPower.style.display = "none";
 
 }, 8000);
-
-aparecerKillPower();
 
 
 // REAPARECER
@@ -131,54 +125,9 @@ setInterval(() => {
 }, 15000);
 
 
-// FUNÇÃO PARA GERAR POSIÇÃO ALEATÓRIA
-
-function aparecerPowerUp(){
-
-const randomX = Math.random() * (gameWidth - 40);
-const randomY = Math.random() * (gameHeight - 40);
-
-    speedPower.style.left = randomX + "px";
-    speedPower.style.top = randomY + "px";
-
-    speedPower.style.display = "block";
-	
-}
-
-// SUMIR APÓS 8 SEGUNDOS
-
-setTimeout(() => {
-
-    speedPower.style.display = "none";
-
-}, 8000);
-
-
-
-
-// PRIMEIRA APARIÇÃO
-
-aparecerPowerUp();
-
-
-// REAPARECER A CADA 15 SEGUNDOS
-
-setInterval(() => {
-
-    // só reaparece se estiver escondido
-    if(speedPower.style.display === "none"){
-
-        aparecerPowerUp();
-
-    }
-
-}, 15000);
-
-
-
-
+// =========================
 // ATUALIZAR JOGADORES
-
+// =========================
 
 function atualizarJogadores(){
 
@@ -194,6 +143,11 @@ function atualizarJogadores(){
     player4.style.left = p4.x + "px";
     player4.style.top = p4.y + "px";
 }
+
+
+// =========================
+// PAREDES
+// =========================
 
 function bateuNaParede(x, y){
 
@@ -218,8 +172,10 @@ function bateuNaParede(x, y){
     return false;
 }
 
-// LIMITAR MAPA
 
+// =========================
+// LIMITAR MAPA
+// =========================
 
 function limitarMapa(player){
 
@@ -241,8 +197,9 @@ function limitarMapa(player){
 }
 
 
-// COLISÃO
-
+// =========================
+// COLISÃO DOTS
+// =========================
 
 function verificarColisao(playerElement, playerData, scoreElement){
 
@@ -268,9 +225,12 @@ function verificarColisao(playerElement, playerData, scoreElement){
     });
 }
 
-function verificarPlayers(){
 
-    // PLAYER 1
+// =========================
+// VERIFICAR PLAYERS
+// =========================
+
+function verificarPlayers(){
 
     if(
         killMode1 &&
@@ -297,8 +257,6 @@ function verificarPlayers(){
     }
 
 
-    // PLAYER 2
-
     if(
         killMode2 &&
         Math.abs(p2.x - p1.x) < 25 &&
@@ -324,8 +282,6 @@ function verificarPlayers(){
     }
 
 
-    // PLAYER 3
-
     if(
         killMode3 &&
         Math.abs(p3.x - p1.x) < 25 &&
@@ -350,8 +306,6 @@ function verificarPlayers(){
         congelarPlayer(4);
     }
 
-
-    // PLAYER 4
 
     if(
         killMode4 &&
@@ -379,9 +333,12 @@ function verificarPlayers(){
 
 }
 
-function congelarPlayer(player){
 
-    // PLAYER 1
+// =========================
+// CONGELAR
+// =========================
+
+function congelarPlayer(player){
 
     if(player === 1){
 
@@ -401,8 +358,6 @@ function congelarPlayer(player){
     }
 
 
-    // PLAYER 2
-
     if(player === 2){
 
         if(frozen2) return;
@@ -421,8 +376,6 @@ function congelarPlayer(player){
     }
 
 
-    // PLAYER 3
-
     if(player === 3){
 
         if(frozen3) return;
@@ -440,8 +393,6 @@ function congelarPlayer(player){
         }, 8000);
     }
 
-
-    // PLAYER 4
 
     if(player === 4){
 
@@ -462,8 +413,10 @@ function congelarPlayer(player){
 
 }
 
-// VITÓRIA
 
+// =========================
+// VITÓRIA
+// =========================
 
 function verificarVitoria(){
 
@@ -497,76 +450,16 @@ function verificarVitoria(){
 
         }, 100);
 
+    }
+
 }
 
-}
 
-
-// POWER-UP VELOCIDADE
-
-
-function verificarPowerSpeed(){
-
-    // se estiver escondido não verifica colisão
-    if(speedPower.style.display === "none"){
-        return;
-    }
-
-    const powerX = parseFloat(speedPower.style.left);
-    const powerY = parseFloat(speedPower.style.top);
-
-    // PLAYER 1
-
-    if(
-        Math.abs(p1.x - powerX) < 45 &&
-        Math.abs(p1.y - powerY) < 45
-    ){
-
-        ativarSpeed(1);
-
-        speedPower.style.display = "none";
-    }
-
-    // PLAYER 2
-
-    if(
-        Math.abs(p2.x - powerX) < 30 &&
-        Math.abs(p2.y - powerY) < 30
-    ){
-
-        ativarSpeed(2);
-
-        speedPower.style.display = "none";
-    }
-
-    // PLAYER 3
-
-    if(
-        Math.abs(p3.x - powerX) < 30 &&
-        Math.abs(p3.y - powerY) < 30
-    ){
-
-        ativarSpeed(3);
-
-        speedPower.style.display = "none";
-    }
-
-    // PLAYER 4
-
-    if(
-        Math.abs(p4.x - powerX) < 30 &&
-        Math.abs(p4.y - powerY) < 30
-    ){
-
-        ativarSpeed(4);
-
-        speedPower.style.display = "none";
-    }
-}
+// =========================
+// VERIFICAR KILL POWER
+// =========================
 
 function verificarKillPower(){
-	
-	
 
     if(killPower.style.display === "none"){
         return;
@@ -576,23 +469,19 @@ function verificarKillPower(){
     const powerY = parseFloat(killPower.style.top);
 
 
-    // PLAYER 1
-
     if(
         Math.abs(p1.x - powerX) < 30 &&
         Math.abs(p1.y - powerY) < 30
     ){
 
         ativarKillMode(1);
-		
-		somKill.currentTime = 0;
-somKill.play();
+
+        somKill.currentTime = 0;
+        somKill.play();
 
         killPower.style.display = "none";
     }
 
-
-    // PLAYER 2
 
     if(
         Math.abs(p2.x - powerX) < 30 &&
@@ -600,15 +489,13 @@ somKill.play();
     ){
 
         ativarKillMode(2);
-		
-		somKill.currentTime = 0;
-somKill.play();
+
+        somKill.currentTime = 0;
+        somKill.play();
 
         killPower.style.display = "none";
     }
 
-
-    // PLAYER 3
 
     if(
         Math.abs(p3.x - powerX) < 30 &&
@@ -616,15 +503,13 @@ somKill.play();
     ){
 
         ativarKillMode(3);
-		
-		somKill.currentTime = 0;
-somKill.play();
+
+        somKill.currentTime = 0;
+        somKill.play();
 
         killPower.style.display = "none";
     }
 
-
-    // PLAYER 4
 
     if(
         Math.abs(p4.x - powerX) < 30 &&
@@ -632,14 +517,19 @@ somKill.play();
     ){
 
         ativarKillMode(4);
-		
-		somKill.currentTime = 0;
-somKill.play();
+
+        somKill.currentTime = 0;
+        somKill.play();
 
         killPower.style.display = "none";
     }
 
 }
+
+
+// =========================
+// ATIVAR KILL
+// =========================
 
 function ativarKillMode(player){
 
@@ -708,17 +598,10 @@ function ativarKillMode(player){
 
 }
 
-function ativarSpeed(){
-	
-	console.log("PEGOU SPEED");
 
-    socket.emit("speedBoost");
-
-}
-
-const socket = io();
-
-
+// =========================
+// SOCKET PLAYERS
+// =========================
 
 socket.on("players", (players) => {
 
@@ -746,19 +629,29 @@ socket.on("players", (players) => {
 
     atualizarJogadores();
 
-    // COLISÕES
     verificarColisao(player1, p1, score1);
     verificarColisao(player2, p2, score2);
     verificarColisao(player3, p3, score3);
     verificarColisao(player4, p4, score4);
 
-    verificarPowerSpeed();
     verificarKillPower();
+
     verificarPlayers();
+
     verificarVitoria();
-	
-	if(typeof verificarStealPower === "function"){
-    verificarStealPower();
-}
+
+
+    // SPEED
+
+    if(typeof verificarPowerSpeed === "function"){
+        verificarPowerSpeed();
+    }
+
+
+    // STEAL
+
+    if(typeof verificarStealPower === "function"){
+        verificarStealPower();
+    }
 
 });
