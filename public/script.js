@@ -15,6 +15,13 @@ const score4 = document.getElementById("score4");
 
 const walls = document.querySelectorAll(".wall");
 
+// VELOCIDADES
+
+let speed1 = 5;
+let speed2 = 5;
+let speed3 = 5;
+let speed4 = 5;
+
 // SONS
 
 const somKill = new Audio("kill.mp3");
@@ -711,56 +718,70 @@ function ativarKillMode(player){
 function ativarSpeed(player){
 
     console.log("PLAYER PEGOU SPEED");
-
-    // ENVIA AO SERVIDOR
-    socket.emit("speedBoost");
+	socket.emit("speedBoost");
 
     // PLAYER 1
     if(player === 1){
+
+        speed1 = 7.5; // +50%
 
         player1.classList.add("speed-mode");
 
         setTimeout(() => {
 
+            speed1 = 5;
+
             player1.classList.remove("speed-mode");
 
-        }, 5000);
+        }, 8000);
     }
 
     // PLAYER 2
     if(player === 2){
 
+        speed2 = 7.5;
+
         player2.classList.add("speed-mode");
 
         setTimeout(() => {
 
+            speed2 = 5;
+
             player2.classList.remove("speed-mode");
 
-        }, 5000);
+        }, 8000);
     }
 
     // PLAYER 3
     if(player === 3){
 
+        speed3 = 7.5;
+
         player3.classList.add("speed-mode");
 
         setTimeout(() => {
 
+            speed3 = 5;
+
             player3.classList.remove("speed-mode");
 
-        }, 5000);
+        }, 8000);
     }
 
     // PLAYER 4
     if(player === 4){
 
+        speed4 = 7.5;
+
         player4.classList.add("speed-mode");
 
         setTimeout(() => {
 
+            speed4 = 5;
+
             player4.classList.remove("speed-mode");
 
-        }, 5000);
+        }, 8000);
     }
 
 }

@@ -141,13 +141,14 @@ players[socket.id] = {
 		
 // SPEED BOOST		
 		
-		socket.on("speedBoost", () => {
+socket.on("speedBoost", () => {
 
     const p = players[socket.id];
 
     if(!p) return;
 
-    p.speed = 16;
+    // +50% de velocidade
+    p.speed = 12;
 
     io.emit("players", players);
 
@@ -157,7 +158,7 @@ players[socket.id] = {
 
         io.emit("players", players);
 
-    }, 5000);
+    }, 8000);
 
 });
 
