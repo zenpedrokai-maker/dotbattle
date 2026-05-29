@@ -141,22 +141,25 @@ players[socket.id] = {
 		
 // SPEED BOOST		
 		
-socket.on("speedBoost", () => {
+socket.on("speedBoost", (playerNumero) => {
 
-    const p = players[socket.id];
+    const ids = Object.keys(players);
+
+    const playerId = ids[playerNumero - 1];
+
+    const p = players[playerId];
 
     if(!p) return;
 
-    // +50% de velocidade
     p.speed = 12;
 
-    io.emit("players", players);
+    console.log("BOOST ATIVADO:", playerNumero);
 
     setTimeout(() => {
 
         p.speed = 5;
 
-        io.emit("players", players);
+        console.log("BOOST TERMINOU:", playerNumero);
 
     }, 8000);
 

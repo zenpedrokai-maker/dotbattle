@@ -718,7 +718,7 @@ function ativarKillMode(player){
 function ativarSpeed(player){
 
     console.log("PLAYER PEGOU SPEED");
-	socket.emit("speedBoost");
+	socket.emit("speedBoost", player);
 
     // PLAYER 1
     if(player === 1){
