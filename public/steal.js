@@ -29,32 +29,28 @@ function aparecerStealPower(){
 }
 
 
-// PRIMEIRA VEZ
+function cicloStealPower(){
 
-aparecerStealPower();
+    aparecerStealPower();
 
+    // FICA VISÍVEL 8s
+    setTimeout(() => {
 
-// SUMIR
+        stealPower.style.display = "none";
 
-setInterval(() => {
+        // ESPERA 15s PRA VOLTAR
+        setTimeout(() => {
 
-    stealPower.style.display = "none";
+            cicloStealPower();
 
-}, 15000);
+        }, 15000);
 
+    }, 8000);
 
-// REAPARECER
+}
 
-setInterval(() => {
-
-    if(stealPower.style.display === "none"){
-
-        aparecerStealPower();
-
-    }
-
-}, 8000);
-
+// COMEÇAR CICLO
+cicloStealPower();
 
 // VERIFICAR COLISÃO
 
@@ -79,13 +75,15 @@ function verificarStealPower(){
 function verificarRoubo(player, numero, powerX, powerY){
 
     if(
-    Math.abs(p1.x - powerX) < 45 &&
-    Math.abs(p1.y - powerY) < 45
-){
+        Math.abs(player.x - powerX) < 45 &&
+        Math.abs(player.y - powerY) < 45
+    ){
 
         roubarPontos(numero);
 
         stealPower.style.display = "none";
+
+        console.log("PLAYER ROUBOU PONTOS:", numero);
     }
 
 }
