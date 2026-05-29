@@ -126,7 +126,7 @@ let posicoes = [
 players[socket.id] = {
     x: posicoes[total].x,
     y: posicoes[total].y,
-    speed: 8
+    speed: 5
 };
 
         io.emit("players", players);
@@ -154,7 +154,7 @@ socket.on("speedBoost", () => {
 
     setTimeout(() => {
 
-        p.speed = 8;
+        p.speed = 5;
 
         io.emit("players", players);
 
