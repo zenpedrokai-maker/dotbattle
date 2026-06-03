@@ -514,7 +514,7 @@ function verificarVitoria(){
 
         setTimeout(() => {
 
-            alert("O vencedor foi: " + vencedor);
+            mostrarRanking();
 
         }, 100);
 
