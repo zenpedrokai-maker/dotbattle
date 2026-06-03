@@ -295,10 +295,29 @@ function roubarTudo(ladrao, vitima){
     let pLadrao;
     let pVitima;
 
-    if(ladrao === 1) pLadrao = p1;
-    if(ladrao === 2) pLadrao = p2;
-    if(ladrao === 3) pLadrao = p3;
-    if(ladrao === 4) pLadrao = p4;
+    if(ladrao === 1){
+        pLadrao = p1;
+        stealMode1 = false;
+        player1.classList.remove("steal-mode");
+    }
+
+    if(ladrao === 2){
+        pLadrao = p2;
+        stealMode2 = false;
+        player2.classList.remove("steal-mode");
+    }
+
+    if(ladrao === 3){
+        pLadrao = p3;
+        stealMode3 = false;
+        player3.classList.remove("steal-mode");
+    }
+
+    if(ladrao === 4){
+        pLadrao = p4;
+        stealMode4 = false;
+        player4.classList.remove("steal-mode");
+    }
 
     if(vitima === 1) pVitima = p1;
     if(vitima === 2) pVitima = p2;
@@ -311,26 +330,4 @@ function roubarTudo(ladrao, vitima){
     pVitima.pontos = 0;
 
     atualizarPlacar();
-
-    // DESATIVA O PODER APÓS ROUBAR
-
-    if(ladrao === 1){
-        stealMode1 = false;
-        player1.classList.remove("steal-mode");
-    }
-
-    if(ladrao === 2){
-        stealMode2 = false;
-        player2.classList.remove("steal-mode");
-    }
-
-    if(ladrao === 3){
-        stealMode3 = false;
-        player3.classList.remove("steal-mode");
-    }
-
-    if(ladrao === 4){
-        stealMode4 = false;
-        player4.classList.remove("steal-mode");
-    }
 }

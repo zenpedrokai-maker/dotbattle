@@ -105,6 +105,8 @@ app.get("/controller", (req, res) => {
 // SOCKET
 
 io.on("connection", (socket) => {
+	
+	
 
     console.log("Conectado:", socket.id);
 
@@ -126,7 +128,8 @@ let posicoes = [
 players[socket.id] = {
     x: posicoes[total].x,
     y: posicoes[total].y,
-    speed: 5
+    speed: 5,
+    frozen: false
 };
 
         io.emit("players", players);
@@ -136,6 +139,24 @@ players[socket.id] = {
             Object.keys(players).length
         );
     });
+	
+	socket.on("freezePlayer", (playerNumero) => {
+
+    const ids = Object.keys(players);
+
+    const playerId = ids[playerNumero - 1];
+
+    if(!players[playerId]) return;
+
+    players[playerId].frozen = true;
+
+    setTimeout(() => {
+
+        players[playerId].frozen = false;
+
+    }, 8000);
+
+});
 
 
 		
@@ -170,6 +191,8 @@ socket.on("speedBoost", (playerNumero) => {
         const p = players[socket.id];
 
         if(!p) return;
+		
+		if(p.frozen) return;
 
         const speed = p.speed;
 		console.log("VELOCIDADE:", speed);

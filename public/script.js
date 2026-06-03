@@ -401,6 +401,8 @@ function congelarPlayer(player){
         if(frozen1) return;
 
         frozen1 = true;
+		
+		socket.emit("freezePlayer", 1);
 
         player1.classList.add("frozen");
 
@@ -421,6 +423,8 @@ function congelarPlayer(player){
         if(frozen2) return;
 
         frozen2 = true;
+		
+		socket.emit("freezePlayer", 2);
 
         player2.classList.add("frozen");
 
@@ -441,6 +445,8 @@ function congelarPlayer(player){
         if(frozen3) return;
 
         frozen3 = true;
+		
+		socket.emit("freezePlayer", 3);
 
         player3.classList.add("frozen");
 
@@ -461,6 +467,8 @@ function congelarPlayer(player){
         if(frozen4) return;
 
         frozen4 = true;
+		
+		socket.emit("freezePlayer", 4);
 
         player4.classList.add("frozen");
 
