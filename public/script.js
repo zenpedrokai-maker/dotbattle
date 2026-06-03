@@ -35,6 +35,12 @@ let p2 = { x: 800, y: 50, pontos: 0 };
 let p3 = { x: 50, y: 500, pontos: 0 };
 let p4 = { x: 800, y: 500, pontos: 0 };
 
+//STEAL MODE
+
+let stealMode1 = false;
+let stealMode2 = false;
+let stealMode3 = false;
+let stealMode4 = false;
 
 
 // KILL MODE
@@ -508,6 +514,71 @@ function verificarVitoria(){
 
 }
 
+//ATIVAR STEAL MODE
+
+function ativarStealMode(player){
+
+    if(player === 1){
+
+        stealMode1 = true;
+
+        player1.classList.add("steal-mode");
+
+        setTimeout(() => {
+
+            stealMode1 = false;
+
+            player1.classList.remove("steal-mode");
+
+        }, 8000);
+    }
+
+    if(player === 2){
+
+        stealMode2 = true;
+
+        player2.classList.add("steal-mode");
+
+        setTimeout(() => {
+
+            stealMode2 = false;
+
+            player2.classList.remove("steal-mode");
+
+        }, 8000);
+    }
+
+    if(player === 3){
+
+        stealMode3 = true;
+
+        player3.classList.add("steal-mode");
+
+        setTimeout(() => {
+
+            stealMode3 = false;
+
+            player3.classList.remove("steal-mode");
+
+        }, 8000);
+    }
+
+    if(player === 4){
+
+        stealMode4 = true;
+
+        player4.classList.add("steal-mode");
+
+        setTimeout(() => {
+
+            stealMode4 = false;
+
+            player4.classList.remove("steal-mode");
+
+        }, 8000);
+    }
+
+}
 
 // POWER-UP VELOCIDADE
 
@@ -822,13 +893,18 @@ socket.on("players", (players) => {
     verificarColisao(player3, p3, score3);
     verificarColisao(player4, p4, score4);
 
-    verificarPowerSpeed();
-    verificarKillPower();
-    verificarPlayers();
-    verificarVitoria();
-	
-	if(typeof verificarStealPower === "function"){
+ verificarPowerSpeed();
+verificarKillPower();
+
+if(typeof verificarStealPower === "function"){
     verificarStealPower();
 }
+
+if(typeof verificarStealPlayers === "function"){
+    verificarStealPlayers();
+}
+
+verificarPlayers();
+verificarVitoria();
 
 });

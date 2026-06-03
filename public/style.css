@@ -261,3 +261,12 @@ h1{
     drop-shadow(0 0 30px #00ff88);
 
 }
+
+.steal-mode{
+
+    filter:
+    drop-shadow(0 0 5px yellow)
+    drop-shadow(0 0 15px gold)
+    drop-shadow(0 0 30px orange);
+
+}
