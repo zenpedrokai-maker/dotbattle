@@ -187,12 +187,30 @@ socket.on("speedBoost", (playerNumero) => {
 });
 
     socket.on("move", (dir) => {
-
-        const p = players[socket.id];
+		
+		const p = players[socket.id];
 
         if(!p) return;
 		
 		if(p.frozen) return;
+		
+		if(p.x < -30){
+    p.x = 900;
+}
+
+if(p.x > 900){
+    p.x = -30;
+}
+
+if(p.y < -30){
+    p.y = 600;
+}
+
+if(p.y > 600){
+    p.y = -30;
+}
+
+        
 
         const speed = p.speed;
 		console.log("VELOCIDADE:", speed);

@@ -236,20 +236,24 @@ function bateuNaParede(x, y){
 
 function limitarMapa(player){
 
-    if(player.x < 0){
-        player.x = 0;
+    // esquerda -> direita
+    if(player.x < -30){
+        player.x = gameWidth;
     }
 
-    if(player.y < 0){
-        player.y = 0;
+    // direita -> esquerda
+    if(player.x > gameWidth){
+        player.x = -30;
     }
 
-    if(player.x > gameWidth - 30){
-        player.x = gameWidth - 30;
+    // topo -> baixo
+    if(player.y < -30){
+        player.y = gameHeight;
     }
 
-    if(player.y > gameHeight - 30){
-        player.y = gameHeight - 30;
+    // baixo -> topo
+    if(player.y > gameHeight){
+        player.y = -30;
     }
 }
 
@@ -892,6 +896,14 @@ socket.on("players", (players) => {
         p4.x = players[ids[3]].x;
         p4.y = players[ids[3]].y;
     }
+	
+	
+limitarMapa(p1);
+limitarMapa(p2);
+limitarMapa(p3);
+limitarMapa(p4);
+
+
 
     atualizarJogadores();
 
