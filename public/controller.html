@@ -106,30 +106,28 @@ h1{
 
     <h1>DOT BATTLE</h1>
 
-    <div class="status">
-        Controle conectado
+    <div class="status" id="status">
+    Controle conectado
     </div>
 
-    <div class="controls">
+   <div class="controls">
 
-        <button class="btn" id="up">
-            ↑
+    <button class="btn" id="up">
+        ↑
+    </button>
+
+    <div class="middle">
+
+        <button class="btn" id="left">
+            ←
         </button>
-
-        <div class="middle">
-
-            <button class="btn" id="left">
-                ←
-            </button>
-
-            <button class="btn" id="right">
-                →
-            </button>
-
-        </div>
 
         <button class="btn" id="down">
             ↓
+        </button>
+
+        <button class="btn" id="right">
+            →
         </button>
 
     </div>
@@ -213,5 +211,7 @@ right.addEventListener("touchend", pararMovimento);
 // EVITA BUG AO ARRASTAR O DEDO
 
 document.addEventListener("touchend", pararMovimento);
+
+
 
 </script>

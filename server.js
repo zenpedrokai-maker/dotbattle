@@ -129,8 +129,15 @@ players[socket.id] = {
     x: posicoes[total].x,
     y: posicoes[total].y,
     speed: 5,
-    frozen: false
+    frozen: false,
+    numero: total + 1
 };
+
+socket.emit(
+    "meuNumero",
+    total + 1
+);
+
 
         io.emit("players", players);
 
