@@ -94,15 +94,9 @@ game.appendChild(speedPower);
 
 const killPower = document.createElement("div");
 
-killPower.classList.add("speed-power");
+killPower.classList.add("kill-power");
 
-killPower.style.background = "purple";
-
-killPower.style.boxShadow = `
-0 0 10px purple,
-0 0 20px violet,
-0 0 40px purple
-`;
+game.appendChild(killPower);
 
 game.appendChild(killPower);
 

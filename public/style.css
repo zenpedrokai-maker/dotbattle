@@ -210,17 +210,21 @@ h1{
 
     position:absolute;
 
-    width:25px;
-    height:25px;
+    width:30px;
+    height:30px;
 
     border-radius:50%;
 
     background:#00ff88;
 
+    border:2px solid #7dffbf;
+
     box-shadow:
     0 0 10px #00ff88,
-    0 0 20px #00ff88,
-    0 0 40px #00ff88;
+    0 0 25px #00ff88,
+    0 0 50px #00ff88;
+
+    animation:pulse 0.8s infinite;
 
     z-index:100;
 }
@@ -269,6 +273,30 @@ h1{
     drop-shadow(0 0 15px gold)
     drop-shadow(0 0 30px orange);
 
+}
+
+
+.kill-power{
+
+    position:absolute;
+
+    width:30px;
+    height:30px;
+
+    border-radius:50%;
+
+    background:purple;
+
+    border:2px solid violet;
+
+    box-shadow:
+    0 0 10px violet,
+    0 0 25px purple,
+    0 0 50px violet;
+
+    animation:pulse 0.8s infinite;
+
+    z-index:100;
 }
 
 #ranking{
@@ -337,3 +365,4 @@ h1{
 
     font-size:24px;
 }
+
