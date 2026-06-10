@@ -267,7 +267,7 @@ function verificarColisao(playerElement, playerData, scoreElement){
         const distanciaX = Math.abs(playerData.x - dotX);
         const distanciaY = Math.abs(playerData.y - dotY);
 
-        if(distanciaX < 20 && distanciaY < 20){
+        if(distanciaX < 35 && distanciaY < 35){
 
             dot.remove();
 

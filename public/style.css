@@ -121,14 +121,15 @@ h1{
 /* BOLINHAS */
 
 .dot{
-  width: 12px;
-  height: 12px;
+  width: 16px;
+  height: 16px;
 
-  background: white;
+  background:white;
+  border-radius:50%;
 
-  border-radius: 50%;
-
-  position: absolute;
+  box-shadow:
+    0 0 5px white,
+    0 0 10px white;
 }
 
 

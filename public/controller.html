@@ -48,6 +48,27 @@ h1{
     opacity:0.8;
 }
 
+.status{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:12px;
+
+    font-size:20px;
+    opacity:0.9;
+}
+
+.player-icon{
+    width:60px;
+    height:60px;
+
+    object-fit:contain;
+
+    filter:
+    drop-shadow(0 0 5px white)
+    drop-shadow(0 0 15px cyan);
+}
+
 .controls{
     display:flex;
     flex-direction:column;
@@ -212,6 +233,42 @@ right.addEventListener("touchend", pararMovimento);
 
 document.addEventListener("touchend", pararMovimento);
 
+const status = document.getElementById("status");
 
+socket.on("meuNumero", (numero) => {
+
+    if(numero === 1){
+
+        status.innerHTML = `
+        <img src="img/p1.png" class="player-icon">
+        <span>VOCÊ É O JOGADOR AZUL</span>
+        `;
+    }
+
+    if(numero === 2){
+
+        status.innerHTML = `
+        <img src="img/p2.png" class="player-icon">
+        <span>VOCÊ É O JOGADOR VERMELHO</span>
+        `;
+    }
+
+    if(numero === 3){
+
+        status.innerHTML = `
+        <img src="img/p3.png" class="player-icon">
+        <span>VOCÊ É O JOGADOR VERDE</span>
+        `;
+    }
+
+    if(numero === 4){
+
+        status.innerHTML = `
+        <img src="img/p4.png" class="player-icon">
+        <span>VOCÊ É O JOGADOR AMARELO</span>
+        `;
+    }
+
+});
 
 </script>
