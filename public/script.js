@@ -72,8 +72,8 @@ for(let i = 0; i < 20; i++){
 
     dot.classList.add("dot");
 
-    const randomX = Math.random() * 880;
-    const randomY = Math.random() * 580;
+    const randomX = Math.random() * (gameWidth - 20);
+const randomY = Math.random() * (gameHeight - 20);
 
     dot.style.left = randomX + "px";
     dot.style.top = randomY + "px";
@@ -96,7 +96,7 @@ const killPower = document.createElement("div");
 
 killPower.classList.add("kill-power");
 
-game.appendChild(killPower);
+
 
 game.appendChild(killPower);
 
