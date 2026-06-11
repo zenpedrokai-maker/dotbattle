@@ -155,11 +155,15 @@ h1{
 
 </div>
 
+<div id="resultadoTela"></div>
+
 <script src="/socket.io/socket.io.js"></script>
 
 <script>
 
 const socket = io();
+
+let meuNumero = 0;
 
 socket.emit("joinGame");
 
@@ -237,6 +241,8 @@ const status = document.getElementById("status");
 
 socket.on("meuNumero", (numero) => {
 
+meuNumero = numero;
+
     if(numero === 1){
 
         status.innerHTML = `
@@ -266,6 +272,63 @@ socket.on("meuNumero", (numero) => {
         status.innerHTML = `
         <img src="img/p4.png" class="player-icon">
         <span>VOCÊ É O JOGADOR AMARELO</span>
+        `;
+    }
+
+});
+
+socket.on("resultadoFinal", (ranking) => {
+
+    document.querySelector(".container")
+    .style.display = "none";
+
+    const tela =
+    document.getElementById("resultadoTela");
+
+    let meuRank = 0;
+
+    ranking.forEach((jogador, index) => {
+
+        if(
+            (meuNumero === 1 && jogador.nome === "AZUL") ||
+            (meuNumero === 2 && jogador.nome === "VERMELHO") ||
+            (meuNumero === 3 && jogador.nome === "VERDE") ||
+            (meuNumero === 4 && jogador.nome === "AMARELO")
+        ){
+            meuRank = index + 1;
+        }
+
+    });
+
+    let imagem = "";
+
+    if(meuNumero === 1) imagem = "img/p1.png";
+    if(meuNumero === 2) imagem = "img/p2.png";
+    if(meuNumero === 3) imagem = "img/p3.png";
+    if(meuNumero === 4) imagem = "img/p4.png";
+
+    tela.style.display = "flex";
+
+    if(meuRank === 1){
+
+        tela.style.background =
+        "linear-gradient(180deg,#ffd700,#ff9900)";
+
+        tela.innerHTML = `
+            <img src="${imagem}">
+            <h1>🏆 VITÓRIA 🏆</h1>
+            <h2>1º LUGAR</h2>
+        `;
+
+    }else{
+
+        tela.style.background =
+        "linear-gradient(180deg,#111,#000)";
+
+        tela.innerHTML = `
+            <img src="${imagem}">
+            <h1>😢 DERROTA</h1>
+            <h2>${meuRank}º LUGAR</h2>
         `;
     }
 

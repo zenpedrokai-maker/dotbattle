@@ -45,6 +45,11 @@ jogadores.forEach((jogador, index) => {
 
 
     ranking.style.display = "flex";
+	
+	socket.emit(
+    "fimDeJogo",
+    jogadores
+);
 
    const itens = ranking.querySelectorAll(".rank-item");
 

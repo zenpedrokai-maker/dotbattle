@@ -109,12 +109,27 @@ io.on("connection", (socket) => {
 	
 
     console.log("Conectado:", socket.id);
+	
+	
 
     socket.on("joinGame", () => {
 
         if(Object.keys(players).length >= 4){
             return;
         }
+		
+		
+		socket.on("fimDeJogo", (ranking) => {
+
+    io.emit(
+        "resultadoFinal",
+        ranking
+    );
+
+});
+
+
+
 
         const total = Object.keys(players).length;
 
