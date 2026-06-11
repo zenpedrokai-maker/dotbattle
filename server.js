@@ -110,7 +110,13 @@ io.on("connection", (socket) => {
 
     console.log("Conectado:", socket.id);
 	
-	
+	socket.on("fimDeJogo", (ranking) => {
+
+    console.log("FIM DE JOGO RECEBIDO");
+
+    io.emit("resultadoFinal", ranking);
+
+});
 
     socket.on("joinGame", () => {
 
@@ -118,12 +124,7 @@ io.on("connection", (socket) => {
             return;
         }
 		
-		
-		socket.on("fimDeJogo", (ranking) => {
 
-    io.emit(
-        "resultadoFinal",
-        ranking
     );
 
 });
