@@ -48,6 +48,8 @@ jogadores.forEach((jogador, index) => {
 	
 	console.log("ENVIANDO RANKING:", jogadores);
 	
+	console.log(socket);
+	
 	socket.emit(
     "fimDeJogo",
     jogadores
