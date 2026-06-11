@@ -125,10 +125,6 @@ io.on("connection", (socket) => {
         }
 		
 
-    );
-
-});
-
 
 
 
