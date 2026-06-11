@@ -46,6 +46,8 @@ jogadores.forEach((jogador, index) => {
 
     ranking.style.display = "flex";
 	
+	console.log("ENVIANDO RANKING:", jogadores);
+	
 	socket.emit(
     "fimDeJogo",
     jogadores
