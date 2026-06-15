@@ -15,6 +15,16 @@ const score4 = document.getElementById("score4");
 
 const walls = document.querySelectorAll(".wall");
 
+
+
+
+document.addEventListener("click", () => {
+
+    musica.volume = 0.3;
+    musica.play();
+
+}, { once: true });
+
 // VELOCIDADES
 
 let speed1 = 5;
