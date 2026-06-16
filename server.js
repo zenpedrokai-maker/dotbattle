@@ -132,9 +132,9 @@ io.on("connection", (socket) => {
 
 let posicoes = [
     { x:50, y:50 },
-    { x:800, y:50 },
+    { x:1050, y:50 },
     { x:50, y:500 },
-    { x:800, y:500 }
+    { x:1050, y:500 }
 ];
 
 players[socket.id] = {
@@ -214,10 +214,10 @@ socket.on("speedBoost", (playerNumero) => {
 		if(p.frozen) return;
 		
 		if(p.x < -30){
-    p.x = 900;
+    p.x = 1200;
 }
 
-if(p.x > 900){
+if(p.x > 1200){
     p.x = -30;
 }
 

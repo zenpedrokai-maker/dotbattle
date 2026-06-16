@@ -41,9 +41,9 @@ const somKill = new Audio("kill.mp3");
 
 
 let p1 = { x: 50, y: 50, pontos: 0 };
-let p2 = { x: 800, y: 50, pontos: 0 };
+let p2 = { x: 1050, y: 50, pontos: 0 };
 let p3 = { x: 50, y: 500, pontos: 0 };
-let p4 = { x: 800, y: 500, pontos: 0 };
+let p4 = { x: 1050, y: 500, pontos: 0 };
 
 //STEAL MODE
 
@@ -69,14 +69,14 @@ let frozen3 = false;
 let frozen4 = false;
 
 // tamanho do mapa
-const gameWidth = 900;
+const gameWidth = 1200;
 const gameHeight = 600;
 
 
 // BOLINHAS
 
 
-for(let i = 0; i < 20; i++){
+for(let i = 0; i < 50; i++){
 
     const dot = document.createElement("div");
 

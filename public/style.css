@@ -63,10 +63,13 @@ h1{
 
 
 #game{
-  width: 900px;
+  width: 1200px;
   height: 600px;
 
-  background: #1e1e1e;
+  background:
+radial-gradient(circle at center,
+#252525,
+#101010);
 
   border: 4px solid white;
 
@@ -80,8 +83,8 @@ h1{
 /* Jogadores */
 
 .player{
-    width:45px;
-    height:45px;
+    width:70px;
+    height:70px;
     position:absolute;
 
     background-size:cover;
@@ -100,7 +103,7 @@ h1{
 
 #player2{
   
-  left: 800px;
+  left: 1050px;
   top: 50px;
 }
 
@@ -112,7 +115,7 @@ h1{
 
 #player4{
   
-  left: 800px;
+  left: 1050px;
   top: 500px;
 }
 
@@ -121,8 +124,8 @@ h1{
 /* BOLINHAS */
 
 .dot{
-    width:12px;
-    height:12px;
+    width:14px;
+    height:14px;
 
     position:absolute;
 
@@ -175,13 +178,13 @@ h1{
 /* Horizontais */
 
 .horizontal{
-  width: 140px;
-  height: 18px;
+  width: 250px;
+  height: 20px;
 }
 
 .vertical{
-  width: 18px;
-  height: 120px;
+  width: 20px;
+  height: 250px;
 }
 
 /* KILL MODE */
@@ -367,3 +370,65 @@ h1{
     font-size:24px;
 }
 
+
+.player-score{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    min-width:auto;
+
+    padding:10px 15px;
+
+    background:#111;
+
+    border-radius:12px;
+
+    font-size:22px;
+    font-weight:bold;
+}
+
+.player-info{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.cor{
+    width:18px;
+    height:18px;
+
+    border-radius:50%;
+}
+
+.azul-cor{
+    background:#00aaff;
+
+    box-shadow:
+    0 0 5px #00aaff,
+    0 0 15px #00aaff;
+}
+
+.vermelho-cor{
+    background:#ff3333;
+
+    box-shadow:
+    0 0 5px #ff3333,
+    0 0 15px #ff3333;
+}
+
+.verde-cor{
+    background:#00cc44;
+
+    box-shadow:
+    0 0 5px #00cc44,
+    0 0 15px #00cc44;
+}
+
+.amarelo-cor{
+    background:#ffd700;
+
+    box-shadow:
+    0 0 5px #ffd700,
+    0 0 15px #ffd700;
+}
