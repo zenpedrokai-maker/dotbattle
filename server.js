@@ -32,9 +32,9 @@ function bateuNaParede(x, y){
 
         if(
             x < wall.x + wall.w &&
-            x + 60 > wall.x &&
+            x + 30 > wall.x &&
             y < wall.y + wall.h &&
-            y + 60 > wall.y
+            y + 30 > wall.y
         ){
             return true;
         }
