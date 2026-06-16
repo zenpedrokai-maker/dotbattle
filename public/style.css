@@ -83,8 +83,8 @@ radial-gradient(circle at center,
 /* Jogadores */
 
 .player{
-    width:70px;
-    height:70px;
+    width:60px;
+    height:60px;
     position:absolute;
 
     background-size:cover;
@@ -371,64 +371,3 @@ radial-gradient(circle at center,
 }
 
 
-.player-score{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    min-width:auto;
-
-    padding:10px 15px;
-
-    background:#111;
-
-    border-radius:12px;
-
-    font-size:22px;
-    font-weight:bold;
-}
-
-.player-info{
-    display:flex;
-    align-items:center;
-    gap:10px;
-}
-
-.cor{
-    width:18px;
-    height:18px;
-
-    border-radius:50%;
-}
-
-.azul-cor{
-    background:#00aaff;
-
-    box-shadow:
-    0 0 5px #00aaff,
-    0 0 15px #00aaff;
-}
-
-.vermelho-cor{
-    background:#ff3333;
-
-    box-shadow:
-    0 0 5px #ff3333,
-    0 0 15px #ff3333;
-}
-
-.verde-cor{
-    background:#00cc44;
-
-    box-shadow:
-    0 0 5px #00cc44,
-    0 0 15px #00cc44;
-}
-
-.amarelo-cor{
-    background:#ffd700;
-
-    box-shadow:
-    0 0 5px #ffd700,
-    0 0 15px #ffd700;
-}

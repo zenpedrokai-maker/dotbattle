@@ -11,6 +11,18 @@ const io = new Server(server);
 
 const walls = [
 
+    { x:130, y:140, w:22, h:200 },
+    { x:580, y:140, w:22, h:200 },
+    { x:1030, y:140, w:22, h:200 },
+
+    { x:230, y:80, w:260, h:22 },
+    { x:700, y:80, w:260, h:22 },
+
+    { x:230, y:260, w:260, h:22 },
+    { x:700, y:260, w:260, h:22 },
+
+    { x:230, y:470, w:260, h:22 },
+    { x:700, y:470, w:260, h:22 }
 
 ];
 
@@ -20,9 +32,9 @@ function bateuNaParede(x, y){
 
         if(
             x < wall.x + wall.w &&
-            x + 30 > wall.x &&
+            x + 60 > wall.x &&
             y < wall.y + wall.h &&
-            y + 30 > wall.y
+            y + 60 > wall.y
         ){
             return true;
         }
