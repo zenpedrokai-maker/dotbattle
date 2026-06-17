@@ -76,7 +76,7 @@ const gameHeight = 600;
 // BOLINHAS
 
 
-for(let i = 0; i < 50; i++){
+for(let i = 0; i < 100; i++){
 
     const dot = document.createElement("div");
 
@@ -952,3 +952,44 @@ verificarPlayers();
 verificarVitoria();
 
 });
+
+
+
+let tempo = 60;
+
+const timer = document.getElementById("timer");
+
+const cronometro = setInterval(() => {
+
+    tempo--;
+
+    let minutos = Math.floor(tempo / 60);
+    let segundos = tempo % 60;
+
+    timer.textContent =
+        String(minutos).padStart(2, "0") +
+        ":" +
+        String(segundos).padStart(2, "0");
+
+    if(tempo <= 0){
+
+        clearInterval(cronometro);
+
+        finalizarPartida();
+
+    }
+
+}, 1000);
+
+function finalizarPartida(){
+
+    const ranking = [
+        { nome: document.getElementById("nome1").textContent, pontos: score1 },
+        { nome: document.getElementById("nome2").textContent, pontos: score2 },
+        { nome: document.getElementById("nome3").textContent, pontos: score3 },
+        { nome: document.getElementById("nome4").textContent, pontos: score4 }
+    ];
+
+    socket.emit("fimDeJogo", ranking);
+
+}

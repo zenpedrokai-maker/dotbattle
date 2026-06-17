@@ -369,3 +369,43 @@ radial-gradient(circle at center,
 }
 
 
+.legenda{
+    width:1200px;
+
+    display:flex;
+    justify-content:center;
+    gap:40px;
+
+    margin-top:15px;
+
+    color:white;
+    font-size:16px;
+}
+
+.item-legenda{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.mini{
+    width:20px !important;
+    height:20px !important;
+
+    position:static !important;
+
+    animation:none !important;
+}
+
+#timer{
+    text-align:center;
+    font-size:25px;
+    font-weight:bold;
+    color:gold;
+
+    
+
+    text-shadow:
+    0 0 10px gold,
+    0 0 20px gold;
+}
