@@ -1,11 +1,23 @@
 function mostrarRanking() {
 
-    const jogadores = [
-        { nome: "AZUL", pontos: p1.pontos, cor: "#00aaff" },
-        { nome: "VERMELHO", pontos: p2.pontos, cor: "#ff3333" },
-        { nome: "VERDE", pontos: p3.pontos, cor: "#00cc44" },
-        { nome: "AMARELO", pontos: p4.pontos, cor: "#ffd700" }
-    ];
+    const ranking = [
+    {
+        nome: document.getElementById("nome1").textContent,
+        pontos: p1.pontos
+    },
+    {
+        nome: document.getElementById("nome2").textContent,
+        pontos: p2.pontos
+    },
+    {
+        nome: document.getElementById("nome3").textContent,
+        pontos: p3.pontos
+    },
+    {
+        nome: document.getElementById("nome4").textContent,
+        pontos: p4.pontos
+    }
+];
 
     jogadores.sort((a, b) => b.pontos - a.pontos);
 

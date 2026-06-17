@@ -993,3 +993,28 @@ function finalizarPartida(){
     socket.emit("fimDeJogo", ranking);
 
 }
+
+socket.on("resultadoFinal", (ranking) => {
+
+    const rankingDiv =
+    document.getElementById("ranking");
+
+    ranking.sort((a, b) =>
+        b.pontos - a.pontos
+    );
+
+    rankingDiv.innerHTML = `
+        <div class="ranking-box">
+            <h1>🏆 RANKING FINAL 🏆</h1>
+
+            ${ranking.map((jogador, i) => `
+                <div class="rank-item">
+                    <span>${i+1}º - ${jogador.nome}</span>
+                    <span>${jogador.pontos}</span>
+                </div>
+            `).join("")}
+        </div>
+    `;
+
+    rankingDiv.style.display = "flex";
+});
