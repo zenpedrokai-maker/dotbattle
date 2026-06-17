@@ -409,3 +409,15 @@ radial-gradient(circle at center,
     0 0 10px gold,
     0 0 20px gold;
 }
+
+
+.logo-jogo{
+    position:fixed;
+
+    top:7px;
+    right:1200px;
+
+    width:90px;
+
+    z-index:999;
+}
