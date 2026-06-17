@@ -65,10 +65,12 @@ function getLocalIP(){
 
 
 
+
+
 // GERAR LINK
 
 const controllerURL =
-"https://dotbattle.onrender.com/controller";
+"https://dotbattle.onrender.com/nickname";
 
 app.get("/qrcode", async (req, res) => {
 
@@ -85,6 +87,15 @@ app.get("/qrcode", async (req, res) => {
     }
 
 });
+
+app.get("/nickname", (req, res) => {
+
+    res.sendFile(
+        __dirname + "/public/nickname.html"
+    );
+
+});
+
 
 
 // ROTA QR CODE
@@ -117,7 +128,7 @@ io.on("connection", (socket) => {
 
 });
 
-    socket.on("joinGame", () => {
+    socket.on("joinGame", (nickname) => {
 
         if(Object.keys(players).length >= 4){
             return;
@@ -141,7 +152,8 @@ players[socket.id] = {
     y: posicoes[total].y,
     speed: 5,
     frozen: false,
-    numero: total + 1
+    numero: total + 1,
+    nome: nickname
 };
 
 socket.emit(

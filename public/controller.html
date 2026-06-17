@@ -130,6 +130,32 @@ h1{
     <div class="status" id="status">
     Controle conectado
     </div>
+	
+	
+	<div id="login">
+
+    <h2>Digite seu nome</h2>
+
+    <input
+        type="text"
+        id="nickname"
+        maxlength="12"
+        placeholder="Seu nome">
+
+    <button id="entrar">
+        Entrar
+    </button>
+
+</div>
+
+<div id="controle" style="display:none;">
+
+    <!-- seus botões atuais -->
+
+</div>
+
+
+
 
    <div class="controls">
 
@@ -165,9 +191,45 @@ const socket = io();
 
 let meuNumero = 0;
 
-socket.emit("joinGame");
+socket.emit(
+    "joinGame",
+    localStorage.getItem("nickname")
+);
 
 let intervalo = null;
+
+
+
+
+document
+.getElementById("entrar")
+.addEventListener("click", () => {
+
+    const nome =
+    document.getElementById("nickname").value;
+
+    if(nome.trim() === ""){
+        alert("Digite um nome");
+        return;
+    }
+
+    localStorage.setItem(
+        "nickname",
+        nome
+    );
+
+    document.getElementById("login")
+    .style.display = "none";
+
+    document.getElementById("controle")
+    .style.display = "block";
+
+});
+
+
+
+
+
 
 // COMEÇAR MOVIMENTO
 

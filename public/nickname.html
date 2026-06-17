@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Digite seu nome</title>
+
+<style>
+
+body{
+    background:#000;
+    color:white;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    height:100vh;
+
+    font-family:Arial;
+}
+
+input{
+    padding:15px;
+    font-size:22px;
+    border-radius:10px;
+    border:none;
+}
+
+</style>
+
+</head>
+<body>
+
+<input
+id="nickname"
+placeholder="Seu nickname..."
+maxlength="12"
+/>
+
+<script>
+
+const input =
+document.getElementById("nickname");
+
+input.focus();
+
+input.addEventListener("keydown", e=>{
+
+    if(e.key === "Enter"){
+
+        const nome = input.value.trim();
+
+        if(nome.length < 2) return;
+
+        localStorage.setItem(
+            "nickname",
+            nome
+        );
+
+        window.location =
+        "/controller";
+    }
+
+});
+
+</script>
+
+</body>
+</html>
