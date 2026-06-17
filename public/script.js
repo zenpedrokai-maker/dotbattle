@@ -880,6 +880,26 @@ const socket = io();
 socket.on("players", (players) => {
 
     const ids = Object.keys(players);
+	
+	if(ids[0]){
+    document.getElementById("nome1").textContent =
+    players[ids[0]].nome;
+}
+
+if(ids[1]){
+    document.getElementById("nome2").textContent =
+    players[ids[1]].nome;
+}
+
+if(ids[2]){
+    document.getElementById("nome3").textContent =
+    players[ids[2]].nome;
+}
+
+if(ids[3]){
+    document.getElementById("nome4").textContent =
+    players[ids[3]].nome;
+}
 
     if(ids[0]){
         p1.x = players[ids[0]].x;
