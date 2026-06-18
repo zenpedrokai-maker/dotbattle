@@ -984,14 +984,13 @@ const cronometro = setInterval(() => {
 function finalizarPartida(){
 
     const ranking = [
-        { nome: document.getElementById("nome1").textContent, pontos: score1 },
-        { nome: document.getElementById("nome2").textContent, pontos: score2 },
-        { nome: document.getElementById("nome3").textContent, pontos: score3 },
-        { nome: document.getElementById("nome4").textContent, pontos: score4 }
+        { nome: document.getElementById("nome1").textContent, pontos: p1.pontos },
+        { nome: document.getElementById("nome2").textContent, pontos: p2.pontos },
+        { nome: document.getElementById("nome3").textContent, pontos: p3.pontos },
+        { nome: document.getElementById("nome4").textContent, pontos: p4.pontos }
     ];
 
     socket.emit("fimDeJogo", ranking);
-
 }
 
 socket.on("resultadoFinal", (ranking) => {
