@@ -9,9 +9,28 @@ const server = http.createServer(app);
 const io = new Server(server);
 
 
+
+
 const walls = [
 
+    // horizontais
+    { x:230, y:80, w:250, h:20 },
+    { x:700, y:80, w:250, h:20 },
+
+    { x:230, y:260, w:250, h:20 },
+    { x:700, y:260, w:250, h:20 },
+
+    { x:230, y:470, w:250, h:20 },
+    { x:700, y:470, w:250, h:20 },
+
+    // verticais
+    { x:130, y:140, w:20, h:180 },
+    { x:580, y:140, w:20, h:180 },
+    { x:1030, y:140, w:20, h:180 }
+
 ];
+
+
 
 function bateuNaParede(x, y){
 
@@ -19,7 +38,7 @@ function bateuNaParede(x, y){
 
         if(
             x < wall.x + wall.w &&
-            x + 60 > wall.x &&
+            x + 50 > wall.x &&
             y < wall.y + wall.h &&
             y + 60 > wall.y
         ){

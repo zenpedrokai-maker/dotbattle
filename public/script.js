@@ -82,8 +82,15 @@ for(let i = 0; i < 100; i++){
 
     dot.classList.add("dot");
 
-    const randomX = Math.random() * (gameWidth - 20);
-const randomY = Math.random() * (gameHeight - 20);
+    let randomX;
+let randomY;
+
+do{
+
+    randomX = Math.random() * (gameWidth - 20);
+    randomY = Math.random() * (gameHeight - 20);
+
+}while(bateuNaParede(randomX, randomY));
 
     dot.style.left = randomX + "px";
     dot.style.top = randomY + "px";
@@ -115,8 +122,15 @@ game.appendChild(killPower);
 
 function aparecerKillPower(){
 
- const randomX = Math.random() * (gameWidth - 40);
-const randomY = Math.random() * (gameHeight - 40);
+ let randomX;
+let randomY;
+
+do{
+
+    randomX = Math.random() * (gameWidth - 40);
+    randomY = Math.random() * (gameHeight - 40);
+
+}while(bateuNaParede(randomX, randomY));
 
     killPower.style.left = randomX + "px";
     killPower.style.top = randomY + "px";
@@ -152,8 +166,15 @@ setInterval(() => {
 
 function aparecerPowerUp(){
 
-const randomX = Math.random() * (gameWidth - 40);
-const randomY = Math.random() * (gameHeight - 40);
+let randomX;
+let randomY;
+
+do{
+
+    randomX = Math.random() * (gameWidth - 40);
+    randomY = Math.random() * (gameHeight - 40);
+
+}while(bateuNaParede(randomX, randomY));
 
     speedPower.style.left = randomX + "px";
     speedPower.style.top = randomY + "px";
