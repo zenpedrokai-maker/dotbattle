@@ -89,7 +89,7 @@ function getLocalIP(){
 // GERAR LINK
 
 const controllerURL =
-"https://dotbattle.onrender.com/controller";
+"https://dotbattle.onrender.com/nickname";
 
 app.get("/qrcode", async (req, res) => {
 

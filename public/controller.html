@@ -173,15 +173,18 @@ h1{
 
 <script>
 
+
 const socket = io();
 
+const nickname = localStorage.getItem("nickname");
+
+if(!nickname){
+    window.location = "/nickname";
+}
+
+socket.emit("joinGame", nickname);
+
 let meuNumero = 0;
-
-socket.emit(
-    "joinGame",
-    localStorage.getItem("nickname")
-);
-
 let intervalo = null;
 
 
@@ -192,7 +195,13 @@ let intervalo = null;
 
 
 
+const nickname = localStorage.getItem("nickname");
 
+if(!nickname){
+    window.location = "/nickname";
+}
+
+socket.emit("joinGame", nickname);
 
 // COMEÇAR MOVIMENTO
 
